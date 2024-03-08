@@ -1,11 +1,9 @@
-jismesh-js
+jismesh-es
 ==========
-
-[![Build Status](https://travis-ci.com/yoshizow/jismesh-js.svg?branch=master)](https://travis-ci.com/yoshizow/jismesh-js)
 
 Utilities for the Japanese regional grid system defined in Japanese Industrial Standards (JIS X 0410 地域メッシュ).
 
-python の [jismesh パッケージ](https://pypi.org/project/jismesh/) を JavaScript に移植したものです。
+python の [jismesh パッケージ](https://pypi.org/project/jismesh/) を JavaScript に移植した [jismesh-js](https://github.com/yoshizow/jismesh-js) をESモジュール化したものです。
 
 対応地域メッシュコード
 ----------------------
@@ -25,21 +23,6 @@ python の [jismesh パッケージ](https://pypi.org/project/jismesh/) を Java
 - 5次(分割地域メッシュ 250m四方): 5
 - 6次(分割地域メッシュ 125m四方): 6
 
-インストール
-------------
-
-```bash
-npm install jismesh-js
-```
-
-または、CDN から読み込む場合
-
-```html
-<script src="https://unpkg.com/jismesh-js/dist/jismesh.min.js"></script>
-```
-
-グローバル変数 `jismesh` が定義されます。
-
 使用例
 ------
 
@@ -48,7 +31,7 @@ npm install jismesh-js
 メッシュコードに変換する世界測地系緯度経度と変換するメッシュコードの次数を指定します。
 
 ```javascript
-const jismesh = require('jismesh-js');
+import jismesh from "https://code4fukui.github.io/jismesh-es/index.js";
 
 // 緯度経度からメッシュコードを求める。
 const meshCode = jismesh.toMeshCode(35.658581, 139.745433, 3);
@@ -60,7 +43,7 @@ console.log(meshCode);  // => 53393599
 メッシュコードからそのメッシュコードの次数を判定します。
 
 ```javascript
-const jismesh = require('jismesh-js');
+import jismesh from "https://code4fukui.github.io/jismesh-es/index.js";
 
 const meshLevel = jismesh.toMeshLevel('53393599');
 console.log(meshLevel);  // => 3
@@ -73,7 +56,7 @@ console.log(meshLevel);  // => 3
 を指定します。
 
 ```javascript
-const jismesh = require('jismesh-js');
+import jismesh from "https://code4fukui.github.io/jismesh-es/index.js";
 
 // 南西端の緯度経度を求める。
 const [latSW, lonSW] = jismesh.toMeshPoint('53393599', 0, 0);
@@ -91,3 +74,7 @@ console.log(latC, lonC);  // => 35.6625 139.74375
 const [latEastNeighborC, lonEastNeighborC] = jismesh.toMeshPoint('53393599', 0.5, 1.5);
 console.log(latEastNeighborC, lonEastNeighborC);  // => 35.6625 139.75625000000002
 ```
+
+### todo
+
+- test

@@ -1,5 +1,3 @@
-'use strict';
-
 const _unitLv1Lat = 40/60;
 const _unitLv1Lon = 1;
 const _unitLv2Lat = 5/60;
@@ -429,7 +427,7 @@ function toMeshPoint(meshCode, latMultiplier = 0, lonMultiplier = 0) {
   return [lat, lon];
 }
 
-module.exports = {
+export default {
   toMeshCode,
   toMeshPoint,
   toMeshLevel,
