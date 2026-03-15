@@ -1,46 +1,43 @@
-jismesh-es
-==========
+# jismesh-es
 
-Utilities for the Japanese regional grid system defined in Japanese Industrial Standards (JIS X 0410 地域メッシュ).
+Utilities for the Japanese regional grid system defined in Japanese Industrial Standards (JIS X 0410).
 
-python の [jismesh パッケージ](https://pypi.org/project/jismesh/) を JavaScript に移植した [jismesh-js](https://github.com/yoshizow/jismesh-js) をESモジュール化したものです。
+This is an ECMAScript module version of the [jismesh-js](https://github.com/yoshizow/jismesh-js) project, which is a JavaScript port of the Python [jismesh](https://pypi.org/project/jismesh/) package.
 
-対応地域メッシュコード
-----------------------
+## Supported Mesh Codes
 
-- 1次(標準地域メッシュ 80km四方): 1
-- 40倍(拡張地域メッシュ 40km四方): 40000
-- 20倍(拡張地域メッシュ 20km四方): 20000
-- 16倍(拡張地域メッシュ 16km四方): 16000
-- 2次(標準地域メッシュ 10km四方): 2
-- 8倍(拡張地域メッシュ 8km四方): 8000
-- 5倍(拡張地域メッシュ 5km四方): 5000
-- 4倍(拡張地域メッシュ 4km四方): 4000
-- 2.5倍(拡張地域メッシュ 2.5km四方): 2500
-- 2倍(拡張地域メッシュ 2km四方): 2000
-- 3次(標準地域メッシュ 1km四方): 3
-- 4次(分割地域メッシュ 500m四方): 4
-- 5次(分割地域メッシュ 250m四方): 5
-- 6次(分割地域メッシュ 125m四方): 6
+- 1st (Standard Mesh 80km): 1
+- 40x (Extended Mesh 40km): 40000
+- 20x (Extended Mesh 20km): 20000
+- 16x (Extended Mesh 16km): 16000
+- 2nd (Standard Mesh 10km): 2
+- 8x (Extended Mesh 8km): 8000
+- 5x (Extended Mesh 5km): 5000
+- 4x (Extended Mesh 4km): 4000
+- 2.5x (Extended Mesh 2.5km): 2500
+- 2x (Extended Mesh 2km): 2000
+- 3rd (Standard Mesh 1km): 3
+- 4th (Divided Mesh 500m): 4
+- 5th (Divided Mesh 250m): 5
+- 6th (Divided Mesh 125m): 6
 
-使用例
-------
+## Usage
 
-### 緯度経度から地域メッシュコードを求める
+### Get Mesh Code from Latitude and Longitude
 
-メッシュコードに変換する世界測地系緯度経度と変換するメッシュコードの次数を指定します。
+Specify the geodetic latitude and longitude to convert to a mesh code, and the mesh level to convert to.
 
 ```javascript
 import jismesh from "https://code4fukui.github.io/jismesh-es/index.js";
 
-// 緯度経度からメッシュコードを求める。
+// Get the mesh code from latitude and longitude.
 const meshCode = jismesh.toMeshCode(35.658581, 139.745433, 3);
 console.log(meshCode);  // => 53393599
 ```
 
-### 地域メッシュコードから次数を求める
+### Get Mesh Level from Mesh Code
 
-メッシュコードからそのメッシュコードの次数を判定します。
+Determine the mesh level from the given mesh code.
 
 ```javascript
 import jismesh from "https://code4fukui.github.io/jismesh-es/index.js";
@@ -49,32 +46,30 @@ const meshLevel = jismesh.toMeshLevel('53393599');
 console.log(meshLevel);  // => 3
 ```
 
-### 地域メッシュコードから緯度経度を求める
+### Get Latitude and Longitude from Mesh Code
 
-求める緯度経度で表される点は、当該メッシュの基準点(南西端)から、
-緯度座標上の点の位置(当該メッシュの単位経度の倍数)、経度座標上の点の位置(当該メッシュの単位緯度の倍数)
-を指定します。
+Specify the mesh code, and the relative position within the mesh (south-west as 0,0, north-east as 1,1, center as 0.5,0.5, etc.) to get the latitude and longitude.
 
 ```javascript
 import jismesh from "https://code4fukui.github.io/jismesh-es/index.js";
 
-// 南西端の緯度経度を求める。
+// Get the south-west corner latitude and longitude.
 const [latSW, lonSW] = jismesh.toMeshPoint('53393599', 0, 0);
 console.log(latSW, lonSW);  // => 35.65833333333333 139.7375
 
-// 北東端の緯度経度を求める。
+// Get the north-east corner latitude and longitude. 
 const [latNE, lonNE] = jismesh.toMeshPoint('53393599', 1, 1);
 console.log(latNE, lonNE);  // => 35.666666666666664 139.75
 
-// 中心点の緯度経度を求める。
+// Get the center latitude and longitude.
 const [latC, lonC] = jismesh.toMeshPoint('53393599', 0.5, 0.5);
 console.log(latC, lonC);  // => 35.6625 139.74375
 
-// 東隣接メッシュの中心点の緯度経度を求める。
+// Get the latitude and longitude of the center of the east-adjacent mesh.
 const [latEastNeighborC, lonEastNeighborC] = jismesh.toMeshPoint('53393599', 0.5, 1.5);
 console.log(latEastNeighborC, lonEastNeighborC);  // => 35.6625 139.75625000000002
 ```
 
-### todo
+## License
 
-- test
+MIT
