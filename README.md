@@ -1,3 +1,7 @@
+> 日本語のREADMEはこちらです: [README.ja.md](README.ja.md)
+
+Here is the clean, accurate English README.md:
+
 # jismesh-es
 
 Utilities for the Japanese regional grid system defined in Japanese Industrial Standards (JIS X 0410).
