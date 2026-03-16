@@ -1,8 +1,6 @@
-> 日本語のREADMEはこちらです: [README.ja.md](README.ja.md)
-
-Here is the clean, accurate English README.md:
-
 # jismesh-es
+
+> 日本語のREADMEはこちらです: [README.ja.md](README.ja.md)
 
 Utilities for the Japanese regional grid system defined in Japanese Industrial Standards (JIS X 0410).
 
@@ -10,26 +8,24 @@ This is an ECMAScript module version of the [jismesh-js](https://github.com/yosh
 
 ## Supported Mesh Codes
 
-- 1st (Standard Mesh 80km): 1
-- 40x (Extended Mesh 40km): 40000
-- 20x (Extended Mesh 20km): 20000
-- 16x (Extended Mesh 16km): 16000
-- 2nd (Standard Mesh 10km): 2
-- 8x (Extended Mesh 8km): 8000
-- 5x (Extended Mesh 5km): 5000
-- 4x (Extended Mesh 4km): 4000
-- 2.5x (Extended Mesh 2.5km): 2500
-- 2x (Extended Mesh 2km): 2000
-- 3rd (Standard Mesh 1km): 3
-- 4th (Divided Mesh 500m): 4
-- 5th (Divided Mesh 250m): 5
-- 6th (Divided Mesh 125m): 6
+- 1st (Standard Mesh 80km)
+- 40x (Extended Mesh 40km) 
+- 20x (Extended Mesh 20km)
+- 16x (Extended Mesh 16km)
+- 2nd (Standard Mesh 10km)
+- 8x (Extended Mesh 8km)
+- 5x (Extended Mesh 5km)
+- 4x (Extended Mesh 4km)
+- 2.5x (Extended Mesh 2.5km)
+- 2x (Extended Mesh 2km)
+- 3rd (Standard Mesh 1km)
+- 4th (Divided Mesh 500m)
+- 5th (Divided Mesh 250m)
+- 6th (Divided Mesh 125m)
 
 ## Usage
 
 ### Get Mesh Code from Latitude and Longitude
-
-Specify the geodetic latitude and longitude to convert to a mesh code, and the mesh level to convert to.
 
 ```javascript
 import jismesh from "https://code4fukui.github.io/jismesh-es/index.js";
@@ -41,8 +37,6 @@ console.log(meshCode);  // => 53393599
 
 ### Get Mesh Level from Mesh Code
 
-Determine the mesh level from the given mesh code.
-
 ```javascript
 import jismesh from "https://code4fukui.github.io/jismesh-es/index.js";
 
@@ -51,8 +45,6 @@ console.log(meshLevel);  // => 3
 ```
 
 ### Get Latitude and Longitude from Mesh Code
-
-Specify the mesh code, and the relative position within the mesh (south-west as 0,0, north-east as 1,1, center as 0.5,0.5, etc.) to get the latitude and longitude.
 
 ```javascript
 import jismesh from "https://code4fukui.github.io/jismesh-es/index.js";
@@ -76,4 +68,4 @@ console.log(latEastNeighborC, lonEastNeighborC);  // => 35.6625 139.756250000000
 
 ## License
 
-MIT
+MIT License — see [LICENSE](LICENSE).
